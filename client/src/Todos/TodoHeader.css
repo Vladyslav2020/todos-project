@@ -1,0 +1,44 @@
+.Todo-header{
+    width: 100%;
+}
+
+.Todo-header-label{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 50px;
+    text-align: center;
+    color: rgb(190, 190, 190);
+}
+
+.Todo-header-input{
+    position: relative;
+    /* width: calc(100% - 55px); */
+    padding: 5px 25px 5px 30px;
+    background-color: #F8F9F9;
+    border-bottom: 3px solid  rgb(134, 134, 134);
+}
+
+.Todo-header-input div.active{
+    color:rgb(83, 83, 83);
+}
+
+.Todo-header-input input{
+    width: calc(100% - 0px);
+    font-size: 20px;
+    background-color: inherit;
+    outline:none;
+    border:none;
+}
+
+.Todo-header-input .Todo-icon{
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    color: rgb(189, 189, 189);
+}
+
+::placeholder{
+    font-size: 20px;
+    color: #E5E7E9;
+}
+

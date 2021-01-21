@@ -1,0 +1,42 @@
+.Todo-footer{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #F8F9F9;
+    padding: 5px 0;
+}
+
+.Todo-footer .Todo-footer-tabs{
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+
+.Todo-footer .tab{
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Todo-footer .Todo-footer-tabs .active{
+    border-color: black;
+}
+
+.Todo-footer .Todo-cnt{
+    position: absolute;
+    font-size: 12px;
+    left: 5px;
+    top: calc(50% - 9px);
+}
+
+.Todo-footer .Todo-clear-completed{
+    position: absolute;
+    right: 5px;
+    font-size: 12px;
+    top: calc(50% - 9px);
+    cursor: pointer;
+}

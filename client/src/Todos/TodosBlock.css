@@ -1,0 +1,9 @@
+
+.Todos-block{
+    width: 400px;
+}
+
+.Todo-list{
+    width: 100%;
+    box-shadow: 5px 5px 10px 5px rgb(219, 219, 219);
+}

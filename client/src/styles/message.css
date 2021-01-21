@@ -1,0 +1,25 @@
+.message{
+    position: fixed;
+    top: 55px;
+    left: 10px;
+    width: 500px;
+    z-index: 100;
+}
+
+.message-enter{
+    left: -500px;
+    opacity: 0;
+}
+
+.message-enter-active{
+    transition: left 200ms linear, opacity 400ms linear;
+    left: 10px;
+    opacity: 1;
+}
+
+.message-exit-active{
+    transition: left 400ms linear, opacity 200ms linear;
+    left: -500px;
+    opacity: 0;
+}
+

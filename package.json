@@ -1,0 +1,40 @@
+{
+  "name": "mern-project",
+  "version": "1.0.0",
+  "description": "mern practice",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE-ENV=production node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "cross-env NODE-ENV=development concurrently \"npm run server\" \"npm run client\"",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Node-js"
+  },
+  "keywords": [
+    "mern",
+    "node-js",
+    "express",
+    "react"
+  ],
+  "author": "Vlad",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "git": "^0.1.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.11",
+    "react-transition-group": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "concurrently": "^5.0.2"
+  }
+}
