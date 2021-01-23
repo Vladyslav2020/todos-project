@@ -16,10 +16,13 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build-client-dev": "webpack --mode development",
+    "build-client": "webpack --mode production",
+    "start-client-dev-server": "webpack-dev-server",
+    "start-server": "NODE_ENV=production node index.js",
+    "start-server-dev": "NODE_ENV=development node index.js",
+    "start": "npm run build-client && npm run start-server",
+    "start-dev": "npm run build-client-dev && npm run start-server-dev"
   },
   "eslintConfig": {
     "extends": [

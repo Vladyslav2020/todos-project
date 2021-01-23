@@ -41,17 +41,8 @@ const Navbar = () => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to = '/about'>About</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to = '/detail/12'>Details</NavLink>
-                    </li>
                 </ul>
-                    <form className="d-flex" onSubmit = {submitHandler}>
-                        {loginData.isAutinticated && <User name={loginData.name}/>}
-                        <button 
-                            className="btn btn-outline-danger" 
-                            type="submit"
-                            >Logout</button>
-                    </form>
+                    {loginData.isAutinticated && <User name={loginData.name} onSubmit = {submitHandler}/>}
                 </div>
             </div>
         </nav>

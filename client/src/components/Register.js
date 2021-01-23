@@ -12,7 +12,7 @@ const Register = () => {
     const dispatch = useDispatch();
     const registerHandler = async () =>{
         try{
-            const responce = await request('http://localhost:5000/api/auth/register', "POST", {name: data.name, email: data.email, password: data.password});
+            await request('http://localhost:5000/api/auth/register', "POST", {name: data.name, email: data.email, password: data.password});
             dispatch(showMessage({type: "info", message: "Success!!! User created"}));
             setTimeout(() => dispatch(hideMessage()), 3000);
             dispatch(changeTab('login'));

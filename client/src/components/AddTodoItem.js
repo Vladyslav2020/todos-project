@@ -56,10 +56,10 @@ const AddTodoItem = () => {
                         onChange = {(event) => dispatch(changeTodosInput(event.target.value))}
                     />
                     <button 
-                        className="btn btn-outline-primary" 
+                        className="btn btn-primary" 
                         type="button" 
                         id="button"
-                        disabled={loading}
+                        disabled={loading || (!value)}
                         onClick = {submitHandler}
                     >Add todo</button>
                 </div>
