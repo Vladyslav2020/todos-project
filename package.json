@@ -34,7 +34,8 @@
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
+    "concurrently": "^5.0.2",
     "nodemon": "^2.0.7",
-    "concurrently": "^5.0.2"
+    "webpack-cli": "^4.4.0"
   }
 }
