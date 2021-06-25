@@ -1,6 +1,6 @@
-import { CHANGE_CHECK, CHANGE_EMAIL, CHANGE_NAME, CHANGE_TAB, 
-    CHANGE_PASSWORD, SHOW_MESSAGE, HIDE_MESSAGE, LOGIN, LOGOUT, 
-    CHANGE_TODOS_INPUT, UPLOAD_TODOS, CLEAR_AUTH_DATA, EDIT_TODOS_COMPLETE, 
+import { CHANGE_CHECK, CHANGE_EMAIL, CHANGE_NAME, CHANGE_TAB,
+    CHANGE_PASSWORD, SHOW_MESSAGE, HIDE_MESSAGE, LOGIN, LOGOUT,
+    CHANGE_TODOS_INPUT, UPLOAD_TODOS, CLEAR_AUTH_DATA, EDIT_TODOS_COMPLETE,
     EDIT_TODOS_TEXT, EDIT_TODOS_ID, EDIT_TODOS_CLEAR, CHANGE_TODOS_TAB, SHOW_LOADER, HIDE_LOADER } from "./types"
 
 export const changeTab = (tab) => {
@@ -91,7 +91,7 @@ export const downloadTodos = (token) => {
     return async dispatch => {
         try{
             dispatch(showLoader());
-            const response = await fetch('http://localhost:5000/api/todos/', {method: "GET", body: null, 
+            const response = await fetch('http://localhost:8080/api/todos', {method: "GET", body: null,
                 headers: {authorization: token, 'Content-Type' : 'application/json'}});
             const data = await response.json() || {todos: []};
             dispatch(hideLoader());
@@ -143,7 +143,7 @@ export const deleteTodos = (id, token) => {
     return async dispatch => {
         try{
             dispatch(showLoader());
-            const response = await fetch('http://localhost:5000/api/todos/delete', {method: "POST", body: JSON.stringify({id}), 
+            const response = await fetch('http://localhost:8080/api/todos/delete', {method: "DELETE", body: JSON.stringify({id}),
                 headers: {authorization: token, 'Content-Type' : 'application/json'}});
             const data = await response.json();
             dispatch(hideLoader());
@@ -169,8 +169,8 @@ export const updateTodos = (id, completed, text, token) => {
     return async dispatch => {
         try{
             dispatch(showLoader());
-            const response = await fetch('http://localhost:5000/api/todos/update', {method: "POST", 
-                body: JSON.stringify({id, completed, text}), 
+            const response = await fetch('http://localhost:8080/api/todos/update', {method: "PUT",
+                body: JSON.stringify({id, completed, text}),
                 headers: {'Content-Type': 'application/json', authorization: token}});
             const data = await response.json();
             dispatch(editTodosClear());

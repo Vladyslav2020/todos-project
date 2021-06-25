@@ -23,7 +23,7 @@ const AddTodoItem = () => {
             return;
         }
         try{
-            const response = await request('http://localhost:5000/api/todos/add', "POST", {text: value}, {authorization: token});
+            const response = await request('http://localhost:8080/api/todos/add', "POST", {text: value}, {authorization: token});
             dispatch(changeTodosInput(""));
             dispatch(showMessage({type: "info", message: response.message}));
             dispatch(downloadTodos(token));
@@ -41,23 +41,23 @@ const AddTodoItem = () => {
     return (
         <React.Fragment>
             <div className = 'container text-center my-3 '><h3 style = {{color: '#0d6efd'}}>Add new Todos</h3></div>
-            <form className = 'container' method = 'POST' onSubmit = {submitHandler}>            
+            <form className = 'container' method = 'POST' onSubmit = {submitHandler}>
                 <div className="input-group mb-3">
-                    <input 
-                        type="text" 
-                        className="form-control" 
+                    <input
+                        type="text"
+                        className="form-control"
                         name="add"
                         id="add"
-                        placeholder="What needs to be done?" 
-                        aria-label="Recipient's username" 
+                        placeholder="What needs to be done?"
+                        aria-label="Recipient's username"
                         aria-describedby="button-addon2"
                         value={value}
                         required
                         onChange = {(event) => dispatch(changeTodosInput(event.target.value))}
                     />
-                    <button 
-                        className="btn btn-primary" 
-                        type="button" 
+                    <button
+                        className="btn btn-primary"
+                        type="button"
                         id="button"
                         disabled={loading || (!value)}
                         onClick = {submitHandler}

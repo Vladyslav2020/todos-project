@@ -24,6 +24,9 @@ export const useRoutes = isAutinticated => {
                 <Route path = '/' exact>
                     <AuthPage />
                 </Route>
+                <Route path = '/about' exact>
+                    <AboutPage />
+                </Route>
                 <Redirect to = '/' />
             </Switch>
         );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodos, editTodosCheck, editTodosClear, editTodosId, editTodosText, updateTodos } from '../redux/actions';
- 
+
 const TodoList = (props) => {
     const todosData = useSelector(state => state.todos);
     const token = useSelector(state => state.login.token);
@@ -29,11 +29,11 @@ const TodoList = (props) => {
             return true;
         return false;
     }).map((item, index) => (
-        <tr key = {item._id} >
+        <tr key = {item.id} >
             <th scope="row"  style={styleDisable}>{index + 1}</th>
-            <td style={item._id !== todosData.editTodos.id ? styleDisable: null}>{item._id !== todosData.editTodos.id? item.text :
+            <td style={item.id !== todosData.editTodos.id ? styleDisable: null}>{item.id !== todosData.editTodos.id? item.text :
                 <form onSubmit={submitHandler}>
-                    <input 
+                    <input
                         className = "form-control"
                         value = {todosData.editTodos.text}
                         style = {{paddingTop: '3px', paddingBottom: '3px'}}
@@ -44,15 +44,15 @@ const TodoList = (props) => {
             <td style={styleDisable}>{new Date(item.date).toLocaleString()}</td>
             <td style={styleDisable}>
                 <div className="form-check">
-                    <input 
-                        className="form-check-input" 
-                        disabled = {item._id !== todosData.editTodos.id} 
-                        type="checkbox" 
-                        id={item._id}
-                        checked = {item._id !== todosData.editTodos.id? item.completed : todosData.editTodos.completed}
+                    <input
+                        className="form-check-input"
+                        disabled = {item.id !== todosData.editTodos.id}
+                        type="checkbox"
+                        id={item.id}
+                        checked = {item.id !== todosData.editTodos.id? item.completed : todosData.editTodos.completed}
                         onChange = {(event) => dispatch(editTodosCheck(event.target.checked))}
                     />
-                    <label className="form-check-label" htmlFor={item._id}>
+                    <label className="form-check-label" htmlFor={item.id}>
                         Completed
                     </label>
                 </div>
@@ -60,35 +60,35 @@ const TodoList = (props) => {
             <td>
                 <ul className="list-inline m-0">
                     <li className="list-inline-item">
-                        <button 
-                            className="btn btn-primary btn-sm rounded-0" 
-                            type="submit" 
-                            data-toggle="tooltip" 
-                            data-placement="top" 
+                        <button
+                            className="btn btn-primary btn-sm rounded-0"
+                            type="submit"
+                            data-toggle="tooltip"
+                            data-placement="top"
                             title="Save"
-                            disabled = {item._id !== todosData.editTodos.id} 
+                            disabled = {item.id !== todosData.editTodos.id}
                             onClick={submitHandler}
                         ><i className="fa fa-table"></i></button>
                     </li>
                     <li className="list-inline-item">
-                        <button 
-                            className="btn btn-success btn-sm rounded-0" 
-                            type="button" 
-                            data-toggle="tooltip" 
-                            data-placement="top" 
+                        <button
+                            className="btn btn-success btn-sm rounded-0"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
                             title="Edit"
-                            onClick = {() => todosData.editTodos.id !== item._id ? dispatch(editTodosId(item._id, item.text, item.completed)) 
+                            onClick = {() => todosData.editTodos.id !== item.id ? dispatch(editTodosId(item.id, item.text, item.completed))
                                 : dispatch(editTodosClear())}
                         ><i className="fa fa-edit"></i></button>
                     </li>
                     <li className="list-inline-item">
-                        <button 
-                            className="btn btn-danger btn-sm rounded-0" 
-                            type="button" 
-                            data-toggle="tooltip" 
-                            data-placement="top" 
+                        <button
+                            className="btn btn-danger btn-sm rounded-0"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
                             title="Delete"
-                            onClick={() => dispatch(deleteTodos(item._id, token))}
+                            onClick={() => dispatch(deleteTodos(item.id, token))}
                         ><i className="fa fa-trash"></i></button>
                     </li>
                 </ul>

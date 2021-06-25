@@ -16,9 +16,10 @@ const Login = () => {
     }, [loading]);
     const loginHandler = async () =>{
         try{
-            const response = await request('http://localhost:5000/api/auth/login', "POST", {email: data.email, password: data.password});
+            const response = await request('http://localhost:8080/api/auth/login', "POST", {"username": data.email, "password": data.password});
             dispatch(showMessage({type: "info", message: "User logged in"}));
             setTimeout(() => dispatch(hideMessage()), 3000);
+            const authorization = response;
             dispatch(login({id: response.userId, token: response.token, name: response.name}));
             dispatch(clearAuthData());
         }
@@ -32,31 +33,31 @@ const Login = () => {
         <div className = 'container mt-3'>
             <form method = 'POST'>
                 <div className="form-floating mb-3">
-                    <input 
-                        name = "email" 
-                        type="email" 
-                        className="form-control" 
-                        value = {data.email} 
-                        id="email" 
-                        placeholder="name@example.com" 
+                    <input
+                        name = "email"
+                        type="email"
+                        className="form-control"
+                        value = {data.email}
+                        id="email"
+                        placeholder="name@example.com"
                         onChange = {(event) => (dispatch(changeEmail(event.target.value)))}
                         required/>
                     <label htmlFor="email">Email address</label>
                 </div>
                 <div className="form-floating">
-                    <input 
-                        name = "password" 
-                        type="password" 
-                        className="form-control" 
-                        value = {data.password} 
-                        id="password" 
-                        placeholder="Password" 
+                    <input
+                        name = "password"
+                        type="password"
+                        className="form-control"
+                        value = {data.password}
+                        id="password"
+                        placeholder="Password"
                         onChange = {(event) => (dispatch(changePassword(event.target.value)))}
                         required/>
                     <label htmlFor="password">Password</label>
                 </div>
-                <button 
-                    type="submit" 
+                <button
+                    type="submit"
                     className="btn btn-primary mt-3"
                     onClick = {loginHandler}
                     disabled = {loading}
